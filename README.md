@@ -2,13 +2,13 @@
 
 This repository contains the implementation of **Semi-Gradient SARSA** with **Tile Coding** to solve the `MountainCar-v0` environment. This project marks the transition from tabular reinforcement learning to function approximation, enabling an agent to operate in a continuous state space.
 
-## 🏁 Environment Overview
+## Environment Overview
 In the Mountain Car problem, an underpowered car is stuck in a valley. The goal is to reach the flag atop the right hill (position > 0.5). 
 * **State Space:** Continuous $[\text{position}, \text{velocity}]$ representing the car's physical state.
 * **Challenge:** The car cannot drive straight up the hill; it must learn to build momentum by rocking back and forth.
 * **Reward:** $-1.0$ for each time step, incentivizing the agent to find the fastest path to the goal.
 
-## 🏗️ Technical Implementation
+## Technical Implementation
 
 ### 1. Tile Coding (Feature Engineering)
 Because the state space is continuous, a tabular approach is impossible. We implemented a **Tile Coder** to discretize the space into overlapping grids:
@@ -23,7 +23,7 @@ $$Q(s, a, \mathbf{w}) = \mathbf{w}_a^T \mathbf{x}(s)$$
 * **On-Policy Learning:** The agent updates its weights based on the actions it actually takes, ensuring stability.
 * **Weight Updates:** We use a step-size $\alpha$ normalized by the number of tilings ($\alpha/n$) to prevent weight divergence.
 
-## 📊 Results and Analysis
+## Results and Analysis
 
 ### Learned Value Function (`The Heatmap.png`)
 The heatmap visualizes the **Cost-to-Go** (the estimated steps to reach the goal).
